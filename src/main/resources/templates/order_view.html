@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="~{base :: header}"></div>
+    <body>
+        <div th:replace="~{base :: navbar}"></div>
+    
+        <div class="container-fluid">
+            <div class="row">
+                <div th:replace="~{base :: sidebar}"></div>
+    
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Order Details</h1>
+                    </div>
+                    <span th:if="${order == null}">Order not found.</span>
+                    <div class="row" th:if="${order != null}">
+                        <div class="col-md-6">
+                            <form class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                  <label for="orderNumber">Order Number</label>
+                                  <input type="text" class="form-control" id="orderNumber" placeholder="Order Number" th:value="${order.getOrderNumber()}" disabled>
+                                </div>
+                                
+                                <div class="mb-3">
+                                  <label for="orderDate">Order Date</label>
+                                  <input type="text" class="form-control" id="orderDate" placeholder="Order Date" th:value="${order.getOrderDate()}" disabled>
+                                </div>
+                                
+                                <div class="mb-3">
+                                  <label for="firstName">Customer First Name</label>
+                                  <input type="text" class="form-control" id="firstName" placeholder="First Name" th:value="${order.getCustomer().getCustomerFirstName()}" disabled>
+                                </div>
+                                
+                                <div class="mb-3">
+                                  <label for="lastName">Customer Last Name</label>
+                                  <input type="text" class="form-control" id="lastName" placeholder="Last Name" th:value="${order.getCustomer().getCustomerLastName()}" disabled>
+                                </div>
+                                
+                                <div class="mb-3">
+                                  <label for="shippingAddress">Shipping Address</label>
+                                  <input type="text" class="form-control" id="shippingAddress" placeholder="Shipping Address" th:value="${order.getCustomer().getShippingAddress()}" disabled>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{base :: footer}"></div>
+    </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="~{base :: header}"></div>
+    
+    <body>
+        <div th:replace="~{base :: navbar}"></div>
+    
+        <div class="container-fluid">
+            <div class="row">
+                <div th:replace="~{base :: sidebar}"></div>
+    
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Orders</h1>
+                    </div>
+                    
+                    <div class="container-fluid">
+                        <span th:if="${#lists.isEmpty(orders)}">No orders found.</span>
+                        <table id="my-orders" class="table table-striped table-sm" th:if="${not #lists.isEmpty(orders)}"> 
+                            <thead>
+                                <tr>
+                                	<th scope="col" style="display:none;">Order Id</th>
+                                    <th scope="col" style="display:none;">Customer Id</th>
+                                    <th scope="col">Order Number</th>
+                                    <th scope="col">Order Date</th>
+                                    <th scope="col">Customer First Name</th>
+                                    <th scope="col">Customer Last Name</th>
+                                    <th scope="col">Shipping Address</th>
+                                    <th scope="col">Order Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="order : ${orders}">
+                                	<td style="display:none;" th:text="${order.getId()}">Order Id</td>
+                                    <td style="display:none;" th:text="${order.getCustomer().getId()}">Customer Id</td>
+                                    <td><a th:text="${order.getOrderNumber()}" th:href="${'/order/' + order.getId()}">Order Number</a></td>
+                                    <td th:text="${order.getOrderDate()}">Order Date</td>
+                                    <td th:text="${order.getCustomer().getCustomerFirstName()}">Customer First Name</td>
+                                    <td th:text="${order.getCustomer().getCustomerLastName()}">Customer Last Name</td>
+                                    <td th:text="${order.getCustomer().getShippingAddress()}">Shipping Address</td>
+                                    <td th:text="${order.getOrderTotalCurrency()}">Order Total</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{base :: footer}"></div>
+        
+        <!-- DataTables Setup -->
+        <script>
+            $(document).ready(function () {
+                var table = 
+                $('#my-orders').DataTable({
+                    lengthMenu: [10,20,50,100],
+                    pageLength: 20,
+                    //responsive: true,
+                    stateSave: true,
+                    rowCallback: function (row, data) {
+                        $(row).addClass('context-menu-one');
+                    }
+                });
+                
+                //$('#my-orders tbody').on('click', 'tr', function () {
+                //    var data = table.row( this ).data();
+                //});
+                
+                $(function() {
+                    $.contextMenu({
+                        selector: '.context-menu-one', 
+                        callback: function(key, options) {
+                            var m = "clicked: " + key;
+                            var data = table.row( this ).data();
+                            console.log(m);
+                            if (key === 'products')
+                            	window.location.pathname = '/orderproducts/order/' + data[0];                            	
+                            else if (key === 'customer')
+                            	window.location.pathname = '/customer/' + data[1];
+                            
+                            //window.console && console.log(data[0]) || alert(data[0]);
+                             
+                        },
+                        items: {
+                            "products": {name: "Products", icon: "fas fa-shopping-basket"},
+                            "customer": {name: "Customer", icon: "fas fa-user"}
+                        }
+                    });
+
+                    //$('.context-menu-one').on('click', function(e){
+                    //    console.log('clicked', this);
+                    //})    
+                });
+                
+            });
+    	</script>
+        
+    </body>
+</html>
+
+
+    

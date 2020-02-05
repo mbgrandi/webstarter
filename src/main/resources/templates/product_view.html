@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="~{base :: header}"></div>
+    <body>
+        <div th:replace="~{base :: navbar}"></div>
+    
+        <div class="container-fluid">
+            <div class="row">
+                <div th:replace="~{base :: sidebar}"></div>
+    
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Product Details</h1>
+                    </div>
+                    <span th:if="${product == null}">Product not found.</span>
+                    <div class="row" th:if="${product != null}">
+                        <div class="col-md-6">
+                            <form class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                  <label for="productCode">Product Code</label>
+                                  <input type="text" class="form-control" id="productCode" placeholder="Product Code" th:value="${product.getProductCode()}" disabled>
+                                </div>
+                                
+                                <div class="mb-3">
+                                  <label for="productName">Product Name</label>
+                                  <input type="text" class="form-control" id="productName" placeholder="Product Name" th:value="${product.getProductName()}" required>
+                                  <div class="invalid-feedback">
+                                    Please enter the product name.
+                                  </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                  <label for="productPrice">Product Price</label>
+                                  <input type="text" class="form-control" id="productPrice" placeholder="Product Price" th:value="${product.getProductPrice()}" required>
+                                  <div class="invalid-feedback">
+                                    Please enter the product price.
+                                  </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{base :: footer}"></div>
+    </body>
+</html>

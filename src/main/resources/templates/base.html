@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:fragment="header">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Web Starter</title>
+
+<!-- Bootstrap -->
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/4.4.1/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+
+<!-- DataTables -->
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
+	th:href="@{/vendor/datatables/dataTables.bootstrap4.min.css}" 
+    rel="stylesheet"
+	media="screen" />
+<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css"
+    th:href="@{/vendor/datatables/responsive.bootstrap4.min.css}" 
+    rel="stylesheet"
+    media="screen" />
+    
+<!-- Context Menu -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.0/jquery.contextMenu.min.css"
+	th:href="@{/vendor/contextmenu/jquery.contextMenu.min.css}" 
+	rel="stylesheet" />
+    
+<!-- FontAwesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css"
+    th:href="@{/vendor/fontawesome/css/all.min.css}" 
+    rel="stylesheet" />
+
+<!-- Main -->
+<link th:href="@{/css/webstarter.main.css}" 
+    rel="stylesheet" />
+    
+</head>
+
+<body>
+	<!-- Navbar -->
+	<div th:fragment="navbar">
+		<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company Name</a>
+            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+            <ul class="navbar-nav px-3">
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="#">Sign out</a>
+                </li>
+            </ul>
+        </nav>
+	</div>
+    
+    <!-- Sidebar -->
+    <div th:fragment="sidebar">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard}">
+                            <i class="fas fa-home"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/orders}">
+                            <i class="fas fa-shopping-cart"></i>
+                            Orders
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/products}">
+                            <i class="fas fa-shopping-basket"></i>
+                            Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/customers}">
+                            <i class="fas fa-users"></i>
+                            Customers
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+	<div th:fragment="footer">
+		<!-- JQuery -->
+		<script
+			src="http://cdn.jsdelivr.net/webjars/jquery/3.4.1/jquery.min.js"
+			th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+        
+        <!-- Popper -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
+            th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+
+		<!-- Bootstrap -->
+		<script
+			src="http://cdn.jsdelivr.net/webjars/bootstrap/4.4.1/js/bootstrap.min.js"
+			th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+        
+        <!-- DataTables -->
+        <script
+            src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"
+            th:src="@{/vendor/datatables/jquery.dataTables.min.js}"></script>
+        <script
+            src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
+            th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+        <script
+            src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"
+            th:src="@{/vendor/datatables/dataTables.responsive.min.js}"></script>
+        <script
+            src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"
+            th:src="@{/vendor/datatables/responsive.bootstrap4.min.js}"></script>
+            
+        <!-- ChartJs -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+            th:src="@{/webjars/chartjs/2.9.3/Chart.min.js}"></script>
+            
+        <!-- Context Menu -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.0/jquery.contextMenu.min.js"
+            th:src="@{/vendor/contextmenu/jquery.contextMenu.min.js}"></script>
+        
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.0/jquery.ui.position.min.js"
+            th:src="@{/vendor/contextmenu/jquery.ui.position.min.js}"></script>  
+        
+        <!-- Main -->
+        <script
+            th:src="@{/js/webstarter.main.js}"></script>
+        
+	</div>
+</body>
+</html>
+
+
