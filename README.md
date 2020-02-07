@@ -11,6 +11,7 @@ Basic Orders/Products JPA schema, starting point for Java Web Development using:
 - Java 8
 - Bootstrap 4.4.1
 - jQuery 3.4.1
+- DataTables 1.10.20
 - Chart.js 2.9.3
 - H2 embedded database 1.4.2
 - Jackson 2.10.2
